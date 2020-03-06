@@ -1,12 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react"
+import ReactDOM from "react-dom"
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import App from "./App"
+import UserContext from "./userContext"
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+/**
+ * Challenge: Set up context to save the user's username and pass it to anywhere that is currently hardcoding "Username".
+ * 
+ * Use the static class property `contextType` on any components that need to consume context.
+ * https://reactjs.org/docs/context.html
+ */
+
+ReactDOM.render(
+    <UserContext.Provider value={"sally123"}>
+        <App />
+    </UserContext.Provider>, 
+    document.getElementById("root")
+)
