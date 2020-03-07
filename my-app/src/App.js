@@ -1,24 +1,34 @@
-import React, { usestate } from 'react';
+import React, {useState} from "react"
 
+/**
+ * Challenge: Using hooks, track the state of the text in the textarea on every keystroke
+ * To verify it's working, you could just console.log the state on every change
+ * 
+ * https://scrimba.com/p/p7P5Hd/cW8Jdfy
+ */
 
 function App() {
-    const [count, setcount] = usestate(0)
-
+    const [text, setText] = useState("")
+    
+    function handleChange(e) {
+        const {value} = e.target
+        setText(value)
+    }
+    
+    console.log(text)
+    
     return (
         <div>
-
-            <h1>Title</h1>
-            <textarea />
-            <h4>Display Time</h4>
+            <h1>How fast do you type?</h1>
+            <textarea
+                onChange={handleChange}
+                value={text}
+            />
+            <h4>Time remaining: ???</h4>
             <button>Start</button>
-            <h1>Display</h1>
-
+            <h1>Word count: ???</h1>
         </div>
-
     )
 }
 
-
-
-
-export default App;
+export default App
