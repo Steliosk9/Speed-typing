@@ -14,8 +14,13 @@ function App() {
         const {value} = e.target
         setText(value)
     }
-    
-    console.log(text)
+
+    function calcWordCount (text) {
+    const wordsArray = text.trim().split(" ") 
+    const filterwords = wordsArray.filter(word => word !== "")
+    console.log(wordsArray)
+     return filterwords.length
+    }
     
     return (
         <div>
@@ -25,7 +30,7 @@ function App() {
                 value={text}
             />
             <h4>Time remaining: ???</h4>
-            <button>Start</button>
+            <button onClick={() => calcWordCount(text)}>Start</button>
             <h1>Word count: ???</h1>
         </div>
     )
