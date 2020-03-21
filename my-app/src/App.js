@@ -7,25 +7,27 @@ import React, {useState, useEffect} from "react"
 function App() {
     const [text, setText] = useState("")
     const[timeRemaining, setTimeRemaining] = useState(5)
+    const [isTimeRunning, setIsTimeRunning] = useState(false)
     
     function handleChange(e) {
         const {value} = e.target
         setText(value)
     }
 
-    function calcWordCount (text) { 
-    const wordsArray = text.trim().split(" ") 
-    const filterwords = wordsArray.filter(word => word !== "")
-     return filterwords.length
+    function calculateWordCount(text) {
+        const wordsArr = text.trim().split(" ")
+        return wordsArr.filter(word => word !== "").length
     }
     
     useEffect( () =>{
-   if (timeRemaining > 0){
+   if (timeRemaining  && isTimeRunning > 0){
        setTimeout(()=> {
-           setTimeRemaining(time = time - 1)
+           setTimeRemaining(time => time - 1)
        }, 1000)
-   }
-    }, [timeRemaining])
+    } else if (timeRemaining === 0) {
+        setIsTimeRunning(false)
+       }
+    }, [timeRemaining, isTimeRunning])
 
     return (
         <div>
@@ -35,7 +37,7 @@ function App() {
                 value={text}
             />
             <h4>Time remaining:{timeRemaining}</h4>
-            <button onClick={() => calcWordCount(text)}>Start</button>
+            <button onClick={() => setIsTimeRunning(true)}>Start</button>
             <h1>Word count: ???</h1>
         </div>
     )
