@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 
 /**
   <button onClick={() => console.log() calcWordCount(text))}>Start</button>
@@ -16,10 +16,17 @@ function App() {
     function calcWordCount (text) { 
     const wordsArray = text.trim().split(" ") 
     const filterwords = wordsArray.filter(word => word !== "")
-    console.log(wordsArray)
      return filterwords.length
     }
     
+    useEffect( () =>{
+   if (timeRemaining > 0){
+       setTimeout(()=> {
+           setTimeRemaining(time = time - 1)
+       }, 1000)
+   }
+    }, [timeRemaining])
+
     return (
         <div>
             <h1>How fast do you type?</h1>
