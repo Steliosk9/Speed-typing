@@ -19,7 +19,7 @@ function App() {
         return wordsArr.filter(word => word !== "").length
     }
 
-    function startClock(){
+    function startGame(){
     setIsTimeRunning(true)
     setIsTimeRunning(5)
     setText("")
@@ -48,10 +48,11 @@ function App() {
             <textarea
                 onChange={handleChange}
                 value={text}
+                disabled={!isTimeRunning}
             />
             <h4>Time remaining:{timeRemaining}</h4>
             <button 
-            onClick={startClock}
+            onClick={startGame}
             disabled={isTimeRunning}
             >
                 Start
