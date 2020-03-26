@@ -18,6 +18,12 @@ function App() {
         const wordsArr = text.trim().split(" ")
         return wordsArr.filter(word => word !== "").length
     }
+
+    function startClock(){
+    setIsTimeRunning(true)
+    setIsTimeRunning(5)
+    setText("")
+    }
     
     useEffect( () =>{
    if (timeRemaining  && isTimeRunning > 0){
@@ -39,7 +45,7 @@ function App() {
                 value={text}
             />
             <h4>Time remaining:{timeRemaining}</h4>
-            <button onClick={() => setIsTimeRunning(true)}>Start</button>
+            <button onClick={startClock}>Start</button>
     <h1>Word count:{wordCount}</h1>
         </div>
     )
