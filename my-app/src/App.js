@@ -39,7 +39,7 @@ function App() {
     } else if (timeRemaining === 0) {
         endGame()
        }
-       
+
     }, [timeRemaining, isTimeRunning])
 
     return (
@@ -50,8 +50,13 @@ function App() {
                 value={text}
             />
             <h4>Time remaining:{timeRemaining}</h4>
-            <button onClick={startClock}>Start</button>
-    <h1>Word count:{wordCount}</h1>
+            <button 
+            onClick={startClock}
+            disabled={isTimeRunning}
+            >
+                Start
+            </button>
+             <h1>Word count:{wordCount}</h1>
         </div>
     )
 }
