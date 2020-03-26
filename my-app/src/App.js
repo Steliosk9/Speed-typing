@@ -24,6 +24,12 @@ function App() {
     setIsTimeRunning(5)
     setText("")
     }
+
+   function endGame(){
+        setIsTimeRunning(false)
+        const numWords = calculateWordCount(text)
+        setWordCount(numWords)
+    }
     
     useEffect( () =>{
    if (timeRemaining  && isTimeRunning > 0){
@@ -31,10 +37,9 @@ function App() {
            setTimeRemaining(time => time - 1)
        }, 1000)
     } else if (timeRemaining === 0) {
-        setIsTimeRunning(false)
-        const numWords = calculateWordCount(text)
-        setWordCount(numWords)
+        endGame()
        }
+       
     }, [timeRemaining, isTimeRunning])
 
     return (
